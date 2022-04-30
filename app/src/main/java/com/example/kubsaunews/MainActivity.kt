@@ -1,6 +1,7 @@
 package com.example.kubsaunews
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -51,8 +52,10 @@ class MainActivity : AppCompatActivity() {
                Log.d("TTT","onFailure : ${t?.message}")
             }
 
-            override fun onItemClick(position: Int) {
-                Toast.makeText(this@MainActivity, "position = $position",Toast.LENGTH_SHORT).show()
+            override fun onItemClick(id: Int) {
+                val intent = Intent(this@MainActivity, DetailsActivity::class.java)
+                intent.putExtra("id",id)
+                startActivity(intent)
             }
         })
     }

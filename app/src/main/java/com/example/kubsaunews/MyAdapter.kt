@@ -27,7 +27,7 @@ class MyAdapter (private val data: CharacterData,
 
         init {
             itemView.setOnClickListener{
-                mItemClickListener.onItemClick(adapterPosition)
+                mItemClickListener.onItemClick(data.results.get(position).id)
             }
         }
 

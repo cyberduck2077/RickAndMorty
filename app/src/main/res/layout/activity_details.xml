@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailsActivity">
+    <!--
+    val created: String,
+    val episode: List<String>,
+   1 val gender: String,
+    val id: Int,
+    val image: String,
+    val location: Location,
+    val name: String,
+    val origin: Origin,
+    val species: String,
+    val status: String,
+    val type: String,
+    val url: String
+
+    origin
+   1  val name: String,
+     val url: String
+
+    location
+     val name: String,
+     val url: String
+    -->
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/details_title_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_margin="10sp"
+        android:textStyle="bold"
+        android:textSize="18dp"/>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/details_title_id"
+        android:layout_marginHorizontal="10sp"
+        android:padding="5sp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/details_name_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:text="Name1 name2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/details_status_id"
+                android:layout_width="match_parent"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:text="status"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/details_species_id"
+                android:textSize="18sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="species"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/details_location_name_id"
+                android:layout_width="match_parent"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:text="location name"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
