@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DetailsActivity">
+    tools:context=".view.DetailsActivity">
     <!--
     val created: String,
     val episode: List<String>,
@@ -49,12 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/details_name_id"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="18sp"
-                android:text="Name1 name2"/>
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/details_status_id"
                 android:layout_width="match_parent"
@@ -73,6 +68,13 @@
                 android:textSize="18sp"
                 android:layout_height="wrap_content"
                 android:text="location name"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/details_created_id"
+                android:layout_width="match_parent"
+                android:textSize="18sp"
+                android:layout_height="wrap_content"
+                android:text="created"/>
+
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

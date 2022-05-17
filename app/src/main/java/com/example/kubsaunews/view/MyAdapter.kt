@@ -1,4 +1,4 @@
-package com.example.kubsaunews
+package com.example.kubsaunews.view
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -6,13 +6,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.view.menu.MenuView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.kubsaunews.R
 import com.example.kubsaunews.data.CharacterData
 import com.squareup.picasso.Picasso
 
 class MyAdapter (private val data: CharacterData,
-                 val mItemClickListener:ItemClickListener): RecyclerView.Adapter<MyAdapter.NewsViewHolder>()   {
+                 val mItemClickListener: ItemClickListener
+): RecyclerView.Adapter<MyAdapter.NewsViewHolder>()   {
 
     interface ItemClickListener{
         fun onItemClick(position: Int)
