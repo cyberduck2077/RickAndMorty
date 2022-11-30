@@ -9,11 +9,11 @@ class CharacterRepositoryImpl: CharacterRepository {
 
     override val interfaceAPI:ServiceCharactersAPI = ServiceCharactersAPI.create()
 
-    override fun getCharacters(page:String): Call<CharacterData> {
+    override suspend fun getCharacters(page:String): Call<CharacterData> {
        return interfaceAPI.getCharactersInPage(page)
     }
 
-    override fun getDetails(id:Int): Call<Result> {
+    override suspend fun getDetails(id:Int): Call<Result> {
         return interfaceAPI.getDetails(id)
     }
 }

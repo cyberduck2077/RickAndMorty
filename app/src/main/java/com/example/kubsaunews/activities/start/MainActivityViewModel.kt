@@ -8,6 +8,10 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kubsaunews.models.CharacterData
 import com.example.kubsaunews.repository.CharacterRepository
 import com.example.kubsaunews.repository.CharacterRepositoryImpl
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,34 +19,45 @@ import retrofit2.Response
 class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _characters = MutableLiveData<CharacterData>()
-    val characters:LiveData<CharacterData> = _characters
+    val characters: LiveData<CharacterData> = _characters
 
     private val mCharacterRepository: CharacterRepository = CharacterRepositoryImpl()
 
-     val currentPage = MutableLiveData<Int>().apply {
+    private var job: Job? = null
+
+    val currentPage = MutableLiveData<Int>().apply {
         value = 1
     }
 
-    fun getCharacters(){
+    fun getCharacters() {
 
-        val response = mCharacterRepository.getCharacters(currentPage.value.toString())
+        job = CoroutineScope(Dispatchers.IO).launch {
+            val response = mCharacterRepository.getCharacters(currentPage.value.toString())
 
-        response.enqueue( object : Callback<CharacterData> {
+            response.enqueue(object : Callback<CharacterData> {
 
-            override fun onResponse(call: Call<CharacterData>?, response: Response<CharacterData>?) {
+                override fun onResponse(
+                    call: Call<CharacterData>,
+                    response: Response<CharacterData>
+                ) {
 
-                if(response?.body() != null) {
-                    _characters.postValue(response.body())
+                    if (response.body() != null) {
+                        _characters.postValue(response.body())
+                    }
                 }
-            }
 
-            override fun onFailure(call: Call<CharacterData>?, t: Throwable?) {
+                override fun onFailure(call: Call<CharacterData>, t: Throwable) {
 
-                Log.d("TTT","onFailure : ${t?.message}")
-            }
+                    Log.d("TTT", "onFailure : ${t.message}")
+                }
 
-        })
+            })
+        }
     }
 
 
+    override fun onCleared() {
+        super.onCleared()
+        job?.cancel()
+    }
 }

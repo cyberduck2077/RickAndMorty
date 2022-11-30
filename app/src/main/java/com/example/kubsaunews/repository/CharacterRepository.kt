@@ -9,7 +9,7 @@ interface CharacterRepository {
 
    val interfaceAPI: ServiceCharactersAPI
 
-   fun getCharacters(page:String):Call<CharacterData>
+   suspend fun getCharacters(page:String):Call<CharacterData>
 
-   fun getDetails(id:Int):Call<Result>
+   suspend fun getDetails(id:Int):Call<Result>
 }
