@@ -1,24 +1,31 @@
-package com.example.kubsaunews.modelview
+package com.example.kubsaunews.activities.start
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.kubsaunews.data.CharacterData
-import com.example.kubsaunews.model.CharacterRepository
-import com.example.kubsaunews.model.CharacterRepositoryImpl
+import com.example.kubsaunews.models.CharacterData
+import com.example.kubsaunews.repository.CharacterRepository
+import com.example.kubsaunews.repository.CharacterRepositoryImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class CharacterDataModelView {
+class MainActivityViewModel(application: Application) : AndroidViewModel(application) {
 
     private val _characters = MutableLiveData<CharacterData>()
     val characters:LiveData<CharacterData> = _characters
 
     private val mCharacterRepository: CharacterRepository = CharacterRepositoryImpl()
 
+     val currentPage = MutableLiveData<Int>().apply {
+        value = 1
+    }
+
     fun getCharacters(){
-        val response = mCharacterRepository.getCharacters()
+
+        val response = mCharacterRepository.getCharacters(currentPage.value.toString())
 
         response.enqueue( object : Callback<CharacterData> {
 

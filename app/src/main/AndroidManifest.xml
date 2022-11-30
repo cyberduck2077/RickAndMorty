@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KubsauNews">
         <activity
-            android:name=".view.DetailsActivity"
+            android:name=".activities.details.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".view.MainActivity"
+            android:name=".activities.start.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

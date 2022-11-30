@@ -1,4 +1,4 @@
-package com.example.kubsaunews.data
+package com.example.kubsaunews.models
 
 data class Origin(
     val name: String,

@@ -1,16 +1,18 @@
-package com.example.kubsaunews.modelview
+package com.example.kubsaunews.activities.details
 
+import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.kubsaunews.data.Result
-import com.example.kubsaunews.model.CharacterRepository
-import com.example.kubsaunews.model.CharacterRepositoryImpl
+import com.example.kubsaunews.models.Result
+import com.example.kubsaunews.repository.CharacterRepository
+import com.example.kubsaunews.repository.CharacterRepositoryImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailsModelView {
+class DetailsActivityViewModel(application: Application) :AndroidViewModel(application) {
 
     private val _details = MutableLiveData<Result>()
     val details: LiveData<Result> = _details

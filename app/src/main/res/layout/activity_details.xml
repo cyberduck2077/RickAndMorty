@@ -4,47 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.DetailsActivity">
-    <!--
-    val created: String,
-    val episode: List<String>,
-   1 val gender: String,
-    val id: Int,
-    val image: String,
-    val location: Location,
-    val name: String,
-    val origin: Origin,
-    val species: String,
-    val status: String,
-    val type: String,
-    val url: String
+    tools:context=".activities.details.DetailsActivity">
 
-    origin
-   1  val name: String,
-     val url: String
-
-    location
-     val name: String,
-     val url: String
-    -->
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="0sp"
+        android:src="@drawable/background_ram"
+        android:scaleType="centerCrop"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/details_title_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Title"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/green_ksau"
         android:layout_margin="10sp"
+        android:elevation="1sp"
+        android:hint="Title"
+        android:textSize="24sp"
         android:textStyle="bold"
-        android:textSize="18dp"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/details_title_id"
         android:layout_marginHorizontal="10sp"
-        android:padding="5sp">
+        android:elevation="5sp"
+        android:padding="5sp"
+        app:cardCornerRadius="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/details_title_id">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -53,31 +44,33 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/details_status_id"
                 android:layout_width="match_parent"
-                android:textSize="18sp"
                 android:layout_height="wrap_content"
-                android:text="status"/>
+                android:hint="Status"
+                android:textSize="18sp" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/details_species_id"
-                android:textSize="18sp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="species"/>
+                android:hint="Species"
+                android:textSize="18sp" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/details_location_name_id"
                 android:layout_width="match_parent"
-                android:textSize="18sp"
                 android:layout_height="wrap_content"
-                android:text="location name"/>
+                android:hint="Location name"
+                android:textSize="18sp" />
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/details_created_id"
                 android:layout_width="match_parent"
-                android:textSize="18sp"
                 android:layout_height="wrap_content"
-                android:text="created"/>
+                android:hint="Created"
+                android:textSize="18sp" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

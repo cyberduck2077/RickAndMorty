@@ -1,17 +1,18 @@
-package com.example.kubsaunews.retrofit
+package com.example.kubsaunews.datasourse
 
-import com.example.kubsaunews.data.CharacterData
-import com.example.kubsaunews.data.Result
+import com.example.kubsaunews.models.CharacterData
+import com.example.kubsaunews.models.Result
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 
-interface InterfaceAPI {
+interface ServiceCharactersAPI {
     @GET("character")
-    fun getCharacters(): Call<CharacterData>
+    fun getCharactersInPage(@Query("page")page:String): Call<CharacterData>
 
     @GET("character/{id_}")
     fun getDetails(@Path("id_")id:Int):Call<Result>
@@ -21,14 +22,13 @@ interface InterfaceAPI {
 
         private var BASE_URL = "https://rickandmortyapi.com/api/"
 
-        fun create(): InterfaceAPI {
+        fun create(): ServiceCharactersAPI {
 
             val retrofit = Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(BASE_URL)
-                .client(UnsafeOkHttpClient.getUnsafeOkHttpClient().build())
                 .build()
-            return retrofit.create(InterfaceAPI::class.java)
+            return retrofit.create(ServiceCharactersAPI::class.java)
 
         }
 
