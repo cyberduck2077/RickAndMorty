@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="green_ksau">#4cb050</color>
+    <color name="coral_toolbar">#14b2cb</color>
 </resources>

@@ -7,20 +7,22 @@
     tools:context=".activities.details.DetailsActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/appCompatImageView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="0sp"
-        android:src="@drawable/background_ram"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_ram" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/details_title_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/green_ksau"
         android:layout_margin="10sp"
         android:elevation="1sp"
+        android:fontFamily="@font/nerko_one_regular"
         android:hint="Title"
+        android:textColor="@color/green_ksau"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,18 +30,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="10sp"
         android:elevation="5sp"
         android:padding="5sp"
         app:cardCornerRadius="15sp"
-        app:layout_constraintTop_toBottomOf="@+id/details_title_id">
+        app:layout_constraintTop_toBottomOf="@+id/details_title_id"
+        tools:layout_editor_absoluteX="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingHorizontal="5sp"
+            android:paddingVertical="10sp">
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/details_status_id"
@@ -71,6 +77,15 @@
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.appcompat.widget.AppCompatCheckBox
+        android:id="@+id/checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/coral_toolbar"
+        android:hint="Save in DB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

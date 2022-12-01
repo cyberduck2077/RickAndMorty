@@ -42,6 +42,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
                 ) {
 
                     if (response.body() != null) {
+
                         _characters.postValue(response.body())
                     }
                 }

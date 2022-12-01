@@ -1,12 +1,10 @@
 package com.example.kubsaunews.activities.start
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.kubsaunews.R
 import com.example.kubsaunews.activities.details.DetailsActivity
 import com.example.kubsaunews.databinding.ActivityMainBinding
 

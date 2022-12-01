@@ -29,7 +29,7 @@
         android:layout_width="120sp"
         android:layout_height="50sp"
         android:layout_margin="10sp"
-        android:backgroundTint="@color/purple_500"
+        android:backgroundTint="@color/coral_toolbar"
         android:text="Previous page"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

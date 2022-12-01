@@ -8,13 +8,11 @@ import androidx.lifecycle.MutableLiveData
 import com.example.kubsaunews.models.Result
 import com.example.kubsaunews.repository.CharacterRepository
 import com.example.kubsaunews.repository.CharacterRepositoryImpl
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import kotlin.time.Duration.Companion.seconds
 
 class DetailsActivityViewModel(application: Application) :AndroidViewModel(application) {
 
@@ -29,6 +27,8 @@ class DetailsActivityViewModel(application: Application) :AndroidViewModel(appli
 
         job = CoroutineScope(Dispatchers.IO).launch {
             val response = mCharacterRepository.getDetails(id)
+
+            delay(1.seconds)
 
             response.enqueue(object : Callback<Result> {
                 override fun onResponse(call: Call<Result>, response: Response<Result>) {
