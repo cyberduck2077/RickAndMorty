@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), MyAdapter.ItemClickListener {
 
     override fun onItemClick(position: Int) {
         val intent = Intent(this@MainActivity, DetailsActivity::class.java)
-        intent.putExtra("id", position)//replace with Bundle
+        intent.putExtra("id", position)
         startActivity(intent)
     }
 }

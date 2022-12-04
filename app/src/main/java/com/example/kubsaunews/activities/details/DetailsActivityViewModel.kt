@@ -5,9 +5,12 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.kubsaunews.datasourse.db.CharacterDB
+import com.example.kubsaunews.datasourse.db.DataForDb
 import com.example.kubsaunews.models.Result
 import com.example.kubsaunews.repository.CharacterRepository
 import com.example.kubsaunews.repository.CharacterRepositoryImpl
+import com.example.kubsaunews.repository.DbRepositoryImpl
 import kotlinx.coroutines.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -22,6 +25,10 @@ class DetailsActivityViewModel(application: Application) :AndroidViewModel(appli
     private var job: Job? = null
 
     private val mCharacterRepository: CharacterRepository = CharacterRepositoryImpl()
+
+    private val db: CharacterDB = DbRepositoryImpl(application).characterDB
+
+    var jobSentData: Job? = null
 
     fun getDetails(id: Int){
 
@@ -44,8 +51,15 @@ class DetailsActivityViewModel(application: Application) :AndroidViewModel(appli
         }
     }
 
+    fun setData(d: DataForDb){
+        jobSentData = CoroutineScope(Dispatchers.IO).launch {
+            val data = db.charactersDao().insertCharacter(d)
+        }
+    }
+
     override fun onCleared() {
         super.onCleared()
         job?.cancel()
+        jobSentData?.cancel()
     }
 }
