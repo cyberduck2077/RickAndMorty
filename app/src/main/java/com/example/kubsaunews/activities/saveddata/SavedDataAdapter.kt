@@ -7,10 +7,16 @@ import com.bumptech.glide.Glide
 import com.example.kubsaunews.databinding.LayoutItemOfSavedDataBinding
 import com.example.kubsaunews.datasourse.db.DataForDb
 
-class SavedDataAdapter(private val data: List<DataForDb>) :
-    RecyclerView.Adapter<SavedDataAdapter.SavedDataViewHolder>() {
+class SavedDataAdapter(
+    private val data: List<DataForDb>,
+    val mOnClickDeleteListener: OnClickDeleteListener
+) :RecyclerView.Adapter<SavedDataAdapter.SavedDataViewHolder>() {
 
-    class SavedDataViewHolder(val binding: LayoutItemOfSavedDataBinding) :
+    interface OnClickDeleteListener {
+        fun onDeleteClick(d: DataForDb)
+    }
+
+    inner class SavedDataViewHolder(val binding: LayoutItemOfSavedDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         fun bind(data: DataForDb) {
@@ -25,6 +31,12 @@ class SavedDataAdapter(private val data: List<DataForDb>) :
                 .with(binding.root)
                 .load(data.image)
                 .into(binding.imgViewCard)
+        }
+
+        init {
+            binding.btnDelete.setOnClickListener {
+                mOnClickDeleteListener.onDeleteClick(data[position])
+            }
         }
 
     }
@@ -43,7 +55,5 @@ class SavedDataAdapter(private val data: List<DataForDb>) :
         return data.size
     }
 
-    interface onClickDelete{
 
-    }
 }

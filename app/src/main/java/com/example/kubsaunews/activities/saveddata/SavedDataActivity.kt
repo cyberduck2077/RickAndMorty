@@ -2,14 +2,13 @@ package com.example.kubsaunews.activities.saveddata
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.HorizontalScrollView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.kubsaunews.databinding.ActivitySavedDataBinding
+import com.example.kubsaunews.datasourse.db.DataForDb
 
-class SavedDataActivity : AppCompatActivity() {
+class SavedDataActivity : AppCompatActivity(), SavedDataAdapter.OnClickDeleteListener {
 
     private lateinit var binding: ActivitySavedDataBinding
     lateinit var savedDataViewModel: SavedDataViewModel
@@ -38,10 +37,15 @@ class SavedDataActivity : AppCompatActivity() {
         savedDataViewModel.apply {
 
             liveDataListSavedData.observe(this@SavedDataActivity) {
-                binding.rvSaved.adapter = SavedDataAdapter(it)
+                binding.rvSaved.adapter = SavedDataAdapter(it,this@SavedDataActivity)
             }
 
         }
 
+    }
+
+    override fun onDeleteClick(d: DataForDb) {
+        savedDataViewModel.deleteData(d)
+        Toast.makeText(this,"Character deleted!",Toast.LENGTH_SHORT).show()
     }
 }

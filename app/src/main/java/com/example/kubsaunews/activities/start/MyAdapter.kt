@@ -37,7 +37,7 @@ class MyAdapter(
 
         init {
             itemView.setOnClickListener {
-                mItemClickListener.onItemClick(data.results.get(position).id)
+                mItemClickListener.onItemClick(data.results[position].id)
             }
         }
 
