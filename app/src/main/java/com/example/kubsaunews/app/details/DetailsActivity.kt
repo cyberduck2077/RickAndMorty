@@ -1,13 +1,13 @@
-package com.example.kubsaunews.activities.details
+package com.example.kubsaunews.app.details
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.kubsaunews.activities.saveddata.SavedDataActivity
+import com.example.kubsaunews.app.saveddata.SavedDataActivity
 import com.example.kubsaunews.databinding.ActivityDetailsBinding
-import com.example.kubsaunews.datasourse.db.DataForDb
+import com.example.kubsaunews.domain.models.CharacterModel
 import java.text.SimpleDateFormat
 
 
@@ -16,7 +16,7 @@ lateinit var mViewModel: DetailsActivityViewModel
 class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsBinding
-    private lateinit var character: DataForDb
+    private lateinit var character: CharacterModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,7 +44,7 @@ class DetailsActivity : AppCompatActivity() {
         binding.checkbox.setOnClickListener {
             if (binding.checkbox.isChecked) {
                 mViewModel.apply {
-                    setData(character)
+                    saveData(character)
                 }
             }
 
@@ -57,7 +57,7 @@ class DetailsActivity : AppCompatActivity() {
             details.observe(this@DetailsActivity) {
                 binding.detailsStatusId.text = "Status: ${it.status}"
                 binding.detailsSpeciesId.text = "Species: ${it.species}"
-                binding.detailsLocationNameId.text = "Location: ${it.location.name}"
+                binding.detailsLocationNameId.text = "Location: ${it.location_name}"
                 binding.detailsTitleId.text = it.name
 
                 val parser = SimpleDateFormat("yyyy-MM-dd")
@@ -67,16 +67,16 @@ class DetailsActivity : AppCompatActivity() {
                 binding.detailsCreatedId.text = "Created: ${output}"
 
                 it.apply {
-                    character = DataForDb(
+                    character = CharacterModel(
                         created = created,
                         episode = episode,
                         gender = gender,
-                        id_in_server = id.toString(),
+                        id = id,
                         image = image,
-                        location = location.name,
+                        location_name = location_name,
                         name = name,
-                        origin_name = origin.name,
-                        origin_url = origin.url,
+                        origin_name = origin_name,
+                        origin_url = origin_url,
                         species = species,
                         status = status,
                         type = type,

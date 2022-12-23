@@ -1,4 +1,4 @@
-package com.example.kubsaunews.activities.start
+package com.example.kubsaunews.app.start
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kubsaunews.databinding.ActivityItemOfListBinding
-import com.example.kubsaunews.models.CharacterData
+import com.example.kubsaunews.domain.models.CharacterModel
 
 class MyAdapter(
-    private val data: CharacterData,
+    private val list: List<CharacterModel>,
     val mItemClickListener: ItemClickListener,
 ) : RecyclerView.Adapter<MyAdapter.NewsViewHolder>() {
 
@@ -23,21 +23,21 @@ class MyAdapter(
         RecyclerView.ViewHolder(binding.root) {
 
         @SuppressLint("SetTextI18n")
-        fun bind(_data: CharacterData, p: Int) {
-            binding.textNameId.text = "Name: " + data.results[p].name
-            binding.textGenderId.text = "Gender: " + data.results[p].gender
-            binding.textOriginId.text = "Origin: " + data.results[p].origin.name
+        fun bind(_list: List<CharacterModel>, p: Int) {
+            binding.textNameId.text = "Name: " + list[p].name
+            binding.textGenderId.text = "Gender: " + list[p].gender
+            binding.textOriginId.text = "Origin: " + list[p].origin_name
             binding.progressBar.visibility = View.GONE
             Glide
                 .with(binding.root)
-                .load(data.results[position].image)
+                .load(list[position].image)
                 .into(binding.imageId)
         }
 
 
         init {
             itemView.setOnClickListener {
-                mItemClickListener.onItemClick(data.results[position].id)
+                mItemClickListener.onItemClick(list[position].id)
             }
         }
 
@@ -50,11 +50,11 @@ class MyAdapter(
     }
 
     override fun onBindViewHolder(holder: NewsViewHolder, position: Int) {
-        holder.bind(data, position)
+        holder.bind(list, position)
 
     }
 
     override fun getItemCount(): Int {
-        return data.results.size
+        return list.size
     }
 }

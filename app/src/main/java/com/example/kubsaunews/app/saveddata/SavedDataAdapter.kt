@@ -1,29 +1,29 @@
-package com.example.kubsaunews.activities.saveddata
+package com.example.kubsaunews.app.saveddata
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.kubsaunews.databinding.LayoutItemOfSavedDataBinding
-import com.example.kubsaunews.datasourse.db.DataForDb
+import com.example.kubsaunews.domain.models.CharacterModel
 
 class SavedDataAdapter(
-    private val data: List<DataForDb>,
+    private val data: List<CharacterModel>,
     val mOnClickDeleteListener: OnClickDeleteListener
 ) :RecyclerView.Adapter<SavedDataAdapter.SavedDataViewHolder>() {
 
     interface OnClickDeleteListener {
-        fun onDeleteClick(d: DataForDb)
+        fun onDeleteClick(d: CharacterModel)
     }
 
     inner class SavedDataViewHolder(val binding: LayoutItemOfSavedDataBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(data: DataForDb) {
+        fun bind(data: CharacterModel) {
             binding.txtCard1.text = data.name
             binding.txtCard2.text = data.gender
             binding.txtCard3.text = data.created
-            binding.txtCard4.text = data.location
+            binding.txtCard4.text = data.location_name
             binding.txtCard5.text = data.species
             binding.txtCard6.text = data.status
             binding.txtCard7.text = data.origin_name

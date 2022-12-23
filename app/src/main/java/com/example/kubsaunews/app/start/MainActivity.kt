@@ -1,11 +1,11 @@
-package com.example.kubsaunews.activities.start
+package com.example.kubsaunews.app.start
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kubsaunews.activities.details.DetailsActivity
+import com.example.kubsaunews.app.details.DetailsActivity
 import com.example.kubsaunews.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MyAdapter.ItemClickListener {
@@ -21,29 +21,29 @@ class MainActivity : AppCompatActivity(), MyAdapter.ItemClickListener {
         initRecyclerView()
         mViewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
-        mViewModel.getCharacters()
+        mViewModel.getCharacterList()
         initObservers()
         initButtonsClickListeners()
-        binding.prevPage.isEnabled=false
+        binding.prevPage.isEnabled = false
     }
 
     private fun initButtonsClickListeners() {
 
-        binding.nextPage.setOnClickListener{
+        binding.nextPage.setOnClickListener {
             binding.prevPage.isEnabled = true
             mViewModel.currentPage.apply {
                 value = value?.plus(1)
             }
-            mViewModel.getCharacters()
+            mViewModel.getCharacterList()
         }
 
         binding.prevPage.setOnClickListener {
             mViewModel.currentPage.apply {
                 value = value?.minus(1)
-                if(value==1)
-                    binding.prevPage.isEnabled=false
+                if (value == 1)
+                    binding.prevPage.isEnabled = false
             }
-            mViewModel.getCharacters()
+            mViewModel.getCharacterList()
         }
     }
 

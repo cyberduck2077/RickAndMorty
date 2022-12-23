@@ -1,4 +1,4 @@
-package com.example.kubsaunews.activities.saveddata
+package com.example.kubsaunews.app.saveddata
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -6,7 +6,7 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.kubsaunews.databinding.ActivitySavedDataBinding
-import com.example.kubsaunews.datasourse.db.DataForDb
+import com.example.kubsaunews.domain.models.CharacterModel
 
 class SavedDataActivity : AppCompatActivity(), SavedDataAdapter.OnClickDeleteListener {
 
@@ -44,7 +44,7 @@ class SavedDataActivity : AppCompatActivity(), SavedDataAdapter.OnClickDeleteLis
 
     }
 
-    override fun onDeleteClick(d: DataForDb) {
+    override fun onDeleteClick(d: CharacterModel) {
         savedDataViewModel.deleteData(d)
         Toast.makeText(this,"Character deleted!",Toast.LENGTH_SHORT).show()
     }

@@ -12,13 +12,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.KubsauNews">
         <activity
-            android:name=".activities.saveddata.SavedDataActivity"
+            android:name="com.example.kubsaunews.app.saveddata.SavedDataActivity"
             android:exported="true" />
         <activity
-            android:name=".activities.details.DetailsActivity"
+            android:name="com.example.kubsaunews.app.details.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.start.MainActivity"
+            android:name="com.example.kubsaunews.app.start.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
