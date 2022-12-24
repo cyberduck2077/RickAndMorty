@@ -1,6 +1,5 @@
 package com.example.kubsaunews.domain.usecases.saveddata
 
-import android.util.Log
 import com.example.kubsaunews.domain.models.CharacterModel
 import com.example.kubsaunews.domain.repositories.SavedDataRepository
 import com.example.kubsaunews.domain.usecases.base.UseCase
@@ -13,9 +12,7 @@ class GetAllDataFromDbUseCase(private val repository: SavedDataRepository):UseCa
 //    }
 
     override suspend fun buildUseCase(params: None): List<CharacterModel> {
-        val res = repository.getAllDataFromDb()
-        Log.d("TTTTTTTTTTTTTTTTT", "\n${res[0].name}\n${res[0].gender}")
-        return res
+        return repository.getAllDataFromDb()
     }
 
     override val reportUseCaseName: String

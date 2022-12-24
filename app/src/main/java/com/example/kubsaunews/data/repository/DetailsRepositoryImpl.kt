@@ -16,7 +16,7 @@ class DetailsRepositoryImpl(private val context: Context) : DetailsRepository {
                 it.created = data.created
                 it.episode = data.episode
                 it.gender = data.gender
-                it.id_in_server = data.id.toString()
+                it.id_in_server = data.id_in_server.toString()
                 it.image = data.image
                 it.location = data.location_name
                 it.name = data.name
@@ -50,7 +50,7 @@ class DetailsRepositoryImpl(private val context: Context) : DetailsRepository {
             it.created = ch.created!!
             it.episode = ch.episode as List<String>
             it.gender = ch.gender!!
-            it.id = ch.id!!
+            it.id_in_server = ch.id!!
             it.image = ch.image!!
             it.name = ch.name!!
             it.species = ch.species!!

@@ -2,10 +2,11 @@ package com.example.kubsaunews.domain.models
 
 
 data class CharacterModel(
+    var id:Int = 0,
     var created: String = "",
     var episode: List<String> = emptyList(),
     var gender: String = "",
-    var id: Int = 0,
+    var id_in_server: Int = 0,
     var image: String = "",
     var name: String = "",
     var species: String = "",

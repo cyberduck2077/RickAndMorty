@@ -71,7 +71,7 @@ class DetailsActivity : AppCompatActivity() {
                         created = created,
                         episode = episode,
                         gender = gender,
-                        id = id,
+                        id_in_server = id_in_server,
                         image = image,
                         location_name = location_name,
                         name = name,

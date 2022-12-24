@@ -9,7 +9,7 @@ import com.example.kubsaunews.domain.repositories.SavedDataRepository
 
 class SavedDataRepositoryImpl(private val context: Context) : SavedDataRepository {
 
-    val db = DataForDbImpl(context)
+    private val db = DataForDbImpl(context)
 
 
     override suspend fun getAllDataFromDb(): List<CharacterModel> {
@@ -21,10 +21,11 @@ class SavedDataRepositoryImpl(private val context: Context) : SavedDataRepositor
         dbList.forEach {
             resultList.add(
                 CharacterModel(
+                    id=it.id,
                     created = it.created,
                     episode = it.episode,
                     gender = it.gender,
-                    id = it.id_in_server.toInt(),
+                    id_in_server = it.id_in_server.toInt(),
                     image = it.image,
                     name = it.name,
                     species = it.species,
@@ -45,13 +46,13 @@ class SavedDataRepositoryImpl(private val context: Context) : SavedDataRepositor
 
     override suspend fun deleteData(data: CharacterModel): Boolean {
         try {
-
             var model: DataForDbModel
             data.apply {
                 model = DataForDbModel(
+                    id = this.id,
                     created = this.created,
                     gender = this.gender,
-                    id_in_server = this.id.toString(),
+                    id_in_server = this.id_in_server.toString(),
                     image = this.image,
                     location = this.location_name,
                     name = this.name,
@@ -59,7 +60,7 @@ class SavedDataRepositoryImpl(private val context: Context) : SavedDataRepositor
                     origin_url = this.origin_url,
                     species = this.species,
                     status = this.status,
-                    type = this.status,
+                    type = this.type,
                     url = this.url,
                     episode = this.episode
 

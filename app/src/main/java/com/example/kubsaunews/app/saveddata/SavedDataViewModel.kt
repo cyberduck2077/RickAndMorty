@@ -16,6 +16,8 @@ class SavedDataViewModel(application: Application) : AndroidViewModel(applicatio
 
     private val _liveDataListSavedData = MutableLiveData<List<CharacterModel>>()
     val liveDataListSavedData: LiveData<List<CharacterModel>> = _liveDataListSavedData
+    private val _isSuccessDelete = MutableLiveData<Boolean>()
+    val isSuccessDelete:LiveData<Boolean> = _isSuccessDelete
 
     var jobLoadAll: Job? = null
     var jobDeleteData: Job? = null
@@ -45,8 +47,10 @@ class SavedDataViewModel(application: Application) : AndroidViewModel(applicatio
                 scope = MainScope(),
                 onSuccess = {
                     Log.d("Delete Data", it.toString())
+                    _isSuccessDelete.postValue(true)
                 },
                 onError = {
+                    _isSuccessDelete.postValue(false)
                     Log.d("Delete Data", "error")
                 },
 

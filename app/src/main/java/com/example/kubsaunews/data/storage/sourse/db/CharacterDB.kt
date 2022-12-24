@@ -7,7 +7,7 @@ import com.example.kubsaunews.data.storage.models.DataForDbModel
 
 @Database(
     entities = [DataForDbModel::class],
-    version = 2
+    version = 1
     //настроить миграцию
 //    autoMigrations = [AutoMigration(from = 1, to = 2)],
 //    exportSchema = true
@@ -24,7 +24,7 @@ abstract class CharacterDB : RoomDatabase() {
         fun getInstance(context: Context): CharacterDB {
             return if (db == null) {
                 db = Room.databaseBuilder(context, CharacterDB::class.java, "db")
-                    .fallbackToDestructiveMigration()
+                    .fallbackToDestructiveMigration() //настроить миграцию (delete)
                     .build()
                 db as CharacterDB
             } else {

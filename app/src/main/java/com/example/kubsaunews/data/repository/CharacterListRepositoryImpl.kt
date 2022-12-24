@@ -14,7 +14,7 @@ class CharacterListRepositoryImpl : CharacterListRepository {
 
         page.results!!.forEach {
             mutableList.add(CharacterModel().apply {
-                this.id = it?.id ?: 0
+                this.id_in_server = it?.id ?: 0
                 this.created = it?.created ?: "no data"
                 this.episode = it?.episode as List<String>
                 this.gender = it.gender ?: "no data"

@@ -37,7 +37,7 @@ class MyAdapter(
 
         init {
             itemView.setOnClickListener {
-                mItemClickListener.onItemClick(list[position].id)
+                mItemClickListener.onItemClick(list[position].id_in_server)
             }
         }
 

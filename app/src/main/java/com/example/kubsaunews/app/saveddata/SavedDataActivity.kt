@@ -1,5 +1,6 @@
 package com.example.kubsaunews.app.saveddata
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -28,7 +29,8 @@ class SavedDataActivity : AppCompatActivity(), SavedDataAdapter.OnClickDeleteLis
     }
 
     private fun initRecyclerView() {
-        binding.rvSaved.layoutManager = LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false)
+        binding.rvSaved.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         binding.rvSaved.setHasFixedSize(true)
     }
 
@@ -37,15 +39,21 @@ class SavedDataActivity : AppCompatActivity(), SavedDataAdapter.OnClickDeleteLis
         savedDataViewModel.apply {
 
             liveDataListSavedData.observe(this@SavedDataActivity) {
-                binding.rvSaved.adapter = SavedDataAdapter(it,this@SavedDataActivity)
+                binding.rvSaved.adapter = SavedDataAdapter(it, this@SavedDataActivity)
             }
 
         }
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onDeleteClick(d: CharacterModel) {
         savedDataViewModel.deleteData(d)
-        Toast.makeText(this,"Character deleted!",Toast.LENGTH_SHORT).show()
+        savedDataViewModel.getAllDataFromDb()
+        binding.rvSaved.adapter?.notifyDataSetChanged()
+        if (savedDataViewModel.isSuccessDelete.value == true)
+            Toast.makeText(this, "Character deleted successful!", Toast.LENGTH_SHORT).show()
+        else
+            Toast.makeText(this, "Character deleted unsuccessful\nSee Logs", Toast.LENGTH_SHORT).show()
     }
 }
