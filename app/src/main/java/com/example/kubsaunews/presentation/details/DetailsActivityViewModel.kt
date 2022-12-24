@@ -1,4 +1,4 @@
-package com.example.kubsaunews.app.details
+package com.example.kubsaunews.presentation.details
 
 import android.app.Application
 import android.util.Log
@@ -20,7 +20,8 @@ class DetailsActivityViewModel(application: Application) :AndroidViewModel(appli
 
     var jobSentData: Job? = null
 
-    private val repository = DetailsRepositoryImpl(application)
+    private val repository =
+        com.example.kubsaunews.data.repository.DetailsRepositoryImpl(application)
 
     fun getDetails(id: Int){
 

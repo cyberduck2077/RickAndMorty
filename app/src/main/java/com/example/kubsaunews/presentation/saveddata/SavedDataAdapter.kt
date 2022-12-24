@@ -1,4 +1,4 @@
-package com.example.kubsaunews.app.saveddata
+package com.example.kubsaunews.presentation.saveddata
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

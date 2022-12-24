@@ -1,6 +1,5 @@
 package com.example.kubsaunews.domain.usecases.base
 
-import android.util.Log
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -27,7 +26,8 @@ abstract class UseCase<T, Params> {
                     onSuccess(result)
                 }
             } catch (e: Exception) {
-                Log.e(TAG, e.message.toString())
+//                Log.e(TAG, e.message.toString()) настроить логирование
+                print("$TAG, ${e.message.toString()}")
 //                Analytics.useCaseError(
 //                    reportUseCaseName,
 //                    e

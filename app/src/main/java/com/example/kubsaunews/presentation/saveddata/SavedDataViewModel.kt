@@ -1,4 +1,4 @@
-package com.example.kubsaunews.app.saveddata
+package com.example.kubsaunews.presentation.saveddata
 
 import android.app.Application
 import android.util.Log
@@ -22,7 +22,8 @@ class SavedDataViewModel(application: Application) : AndroidViewModel(applicatio
     var jobLoadAll: Job? = null
     var jobDeleteData: Job? = null
 
-    private val repository = SavedDataRepositoryImpl(application)
+    private val repository =
+        com.example.kubsaunews.data.repository.SavedDataRepositoryImpl(application)
 
     fun getAllDataFromDb() {
         jobLoadAll = CoroutineScope(Dispatchers.IO).launch {

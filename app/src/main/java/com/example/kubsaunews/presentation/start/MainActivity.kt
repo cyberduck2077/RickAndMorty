@@ -1,11 +1,11 @@
-package com.example.kubsaunews.app.start
+package com.example.kubsaunews.presentation.start
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kubsaunews.app.details.DetailsActivity
+import com.example.kubsaunews.presentation.details.DetailsActivity
 import com.example.kubsaunews.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MyAdapter.ItemClickListener {

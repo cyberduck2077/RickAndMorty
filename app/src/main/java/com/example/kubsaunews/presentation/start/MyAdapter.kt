@@ -1,4 +1,4 @@
-package com.example.kubsaunews.app.start
+package com.example.kubsaunews.presentation.start
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

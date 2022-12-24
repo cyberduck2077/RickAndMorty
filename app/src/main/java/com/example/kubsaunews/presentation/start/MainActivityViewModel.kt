@@ -1,14 +1,12 @@
-package com.example.kubsaunews.app.start
+package com.example.kubsaunews.presentation.start
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.kubsaunews.data.repository.CharacterListRepositoryImpl
 import com.example.kubsaunews.domain.models.CharacterModel
-import com.example.kubsaunews.domain.repositories.CharacterListRepository
 import com.example.kubsaunews.domain.usecases.start.GetCharactersListByPageUseCase
 import kotlinx.coroutines.*
 
@@ -17,7 +15,7 @@ class MainActivityViewModel(application: Application) : AndroidViewModel(applica
     private val _characters = MutableLiveData<List<CharacterModel>>()
     val characters: LiveData<List<CharacterModel>> = _characters
 
-    private val repository = CharacterListRepositoryImpl()
+    private val repository = com.example.kubsaunews.data.repository.CharacterListRepositoryImpl()
 
 
     private var job: Job? = null

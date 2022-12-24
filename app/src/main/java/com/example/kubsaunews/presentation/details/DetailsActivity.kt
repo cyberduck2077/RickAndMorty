@@ -1,11 +1,11 @@
-package com.example.kubsaunews.app.details
+package com.example.kubsaunews.presentation.details
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import com.example.kubsaunews.app.saveddata.SavedDataActivity
+import com.example.kubsaunews.presentation.saveddata.SavedDataActivity
 import com.example.kubsaunews.databinding.ActivityDetailsBinding
 import com.example.kubsaunews.domain.models.CharacterModel
 import java.text.SimpleDateFormat
