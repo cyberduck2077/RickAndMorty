@@ -5,23 +5,19 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.kubsaunews.data.repository.DetailsRepositoryImpl
 import com.example.kubsaunews.domain.models.CharacterModel
+import com.example.kubsaunews.domain.repositories.DetailsRepository
 import com.example.kubsaunews.domain.usecases.details.GetDetailsUseCase
 import com.example.kubsaunews.domain.usecases.details.SaveDataUseCase
 import kotlinx.coroutines.*
 
-class DetailsActivityViewModel(application: Application) :AndroidViewModel(application) {
+class DetailsActivityViewModel(application: Application, private val repository: DetailsRepository) :AndroidViewModel(application) {
 
     private val _details = MutableLiveData<CharacterModel>()
     val details: LiveData<CharacterModel> = _details
 
     private var job: Job? = null
-
     var jobSentData: Job? = null
-
-    private val repository =
-        com.example.kubsaunews.data.repository.DetailsRepositoryImpl(application)
 
     fun getDetails(id: Int){
 

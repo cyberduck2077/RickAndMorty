@@ -6,11 +6,6 @@ import com.example.kubsaunews.data.storage.sourse.ServiceCharactersAPI
 
 class CharacterDataImpl : CharacterData {
 
-
-//    private val coroutineExceptionHandler = CoroutineExceptionHandler { _, throwable ->
-//        throwable.printStackTrace()
-//    }
-
     override suspend fun getCharacterPage(page: Int): CharacterPageModel {
         return ServiceCharactersAPI.create().getCharactersInPage(page = page.toString())
     }

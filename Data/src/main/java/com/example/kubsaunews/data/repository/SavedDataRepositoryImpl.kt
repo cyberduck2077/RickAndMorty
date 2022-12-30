@@ -1,15 +1,13 @@
 package com.example.kubsaunews.data.repository
 
 import android.content.Context
-import android.util.Log
-import com.example.kubsaunews.data.storage.datafordb.DataForDbImpl
+import com.example.kubsaunews.data.storage.datafordb.DAODataForDb
 import com.example.kubsaunews.data.storage.models.DataForDbModel
 import com.example.kubsaunews.domain.models.CharacterModel
 import com.example.kubsaunews.domain.repositories.SavedDataRepository
 
-class SavedDataRepositoryImpl(private val context: Context) : SavedDataRepository {
-
-    private val db = DataForDbImpl(context)
+class SavedDataRepositoryImpl(private val db: DAODataForDb) :
+    SavedDataRepository {
 
 
     override suspend fun getAllDataFromDb(): List<CharacterModel> {
@@ -21,7 +19,7 @@ class SavedDataRepositoryImpl(private val context: Context) : SavedDataRepositor
         dbList.forEach {
             resultList.add(
                 CharacterModel(
-                    id=it.id,
+                    id = it.id,
                     created = it.created,
                     episode = it.episode,
                     gender = it.gender,

@@ -4,26 +4,24 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
-import com.example.kubsaunews.presentation.saveddata.SavedDataActivity
 import com.example.kubsaunews.databinding.ActivityDetailsBinding
 import com.example.kubsaunews.domain.models.CharacterModel
+import com.example.kubsaunews.presentation.saveddata.SavedDataActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.text.SimpleDateFormat
 
-
-lateinit var mViewModel: DetailsActivityViewModel
 
 class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsBinding
     private lateinit var character: CharacterModel
 
+    private val mViewModel by viewModel<DetailsActivityViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        mViewModel = ViewModelProvider(this)[DetailsActivityViewModel::class.java]
 
         val id = intent.getIntExtra("id", 0)
         mViewModel.getDetails(id)

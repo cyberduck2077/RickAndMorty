@@ -3,15 +3,16 @@ package com.example.kubsaunews.presentation.start
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.kubsaunews.presentation.details.DetailsActivity
 import com.example.kubsaunews.databinding.ActivityMainBinding
+import com.example.kubsaunews.presentation.details.DetailsActivity
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity(), MyAdapter.ItemClickListener {
 
     lateinit var binding: ActivityMainBinding
-    private lateinit var mViewModel: MainActivityViewModel
+
+    private val mViewModel by viewModel<MainActivityViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity(), MyAdapter.ItemClickListener {
         setContentView(binding.root)
 
         initRecyclerView()
-        mViewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
         mViewModel.getCharacterList()
         initObservers()
